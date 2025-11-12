@@ -13,19 +13,21 @@ public abstract class NhanVien implements TinhLuong {
         tongSoNhanVien++;
     }
 
-    public String getMaNV() {
-        return maNV;
-    }
+    public String getMaNV() { return maNV; }
+    public String getHoTen() { return hoTen; }
+    public String getChucVu() { return chucVu; }
+    public double getLuongCoBan() { return luongCoBan; }
 
-    public static int getTongSoNhanVien() {
-        return tongSoNhanVien;
-    }
+    public static int getTongSoNhanVien() { return tongSoNhanVien; }
 
     public abstract double tinhLuong();
 
-    public void hienThiThongTin() {
-        System.out.println("Ma NV: " + maNV);
-        System.out.println("Ho ten: " + hoTen);
-        System.out.println("Chuc vu: " + chucVu);
+    public void hienThiThongTinCoBan() {
+        System.out.printf("Ma NV: %s | Ho ten: %s | Chuc vu: %s%n", maNV, hoTen, chucVu);
+    }
+
+    public void hienThiThongTinChiTiet() {
+        hienThiThongTinCoBan();
+        System.out.printf("Loai: %s%n", this instanceof NhanVienChinhThuc ? "Full-time" : "Part-time");
     }
 }

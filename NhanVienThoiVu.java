@@ -8,21 +8,10 @@ public class NhanVienThoiVu extends NhanVien {
         this.tienCong = tienCong;
     }
 
-    public int getSoGioLam() {
-        return soGioLam;
-    }
-
-    public void setSoGioLam(int soGioLam) {
-        this.soGioLam = soGioLam;
-    }
-
-    public double getTienCong() {
-        return tienCong;
-    }
-
-    public void setTienCong(double tienCong) {
-        this.tienCong = tienCong;
-    }
+    public int getSoGioLam() { return soGioLam; }
+    public void setSoGioLam(int soGioLam) { this.soGioLam = soGioLam; }
+    public double getTienCong() { return tienCong; }
+    public void setTienCong(double tienCong) { this.tienCong = tienCong; }
 
     @Override
     public double tinhLuong() {
@@ -30,9 +19,8 @@ public class NhanVienThoiVu extends NhanVien {
     }
 
     @Override
-    public void hienThiThongTin() {
-        super.hienThiThongTin();
-        System.out.println("Loai: Nhan vien thoi vu (Part-time)");
+    public void hienThiThongTinChiTiet() {
+        super.hienThiThongTinChiTiet();
         System.out.println("So gio lam: " + soGioLam);
         System.out.printf("Tien cong/1 gio: %,.0f VND%n", tienCong);
         System.out.printf("Luong thuc linh: %,.0f VND%n", tinhLuong());
