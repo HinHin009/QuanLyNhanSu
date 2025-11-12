@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DanhSachNhanVien {
     private ArrayList<NhanVien> dsNhanVien = new ArrayList<>();
@@ -31,6 +32,31 @@ public class DanhSachNhanVien {
         }
         return false;
     }
+
+    public void suaThongTinNhanVien(String maNV) {
+    NhanVien nv = timNhanVien(maNV);
+    if (nv == null) {
+        System.out.println("Không tìm thấy nhân viên có mã: " + maNV);
+        return;
+    }
+
+    Scanner sc = new Scanner(System.in);
+    System.out.println("=== Sửa thông tin nhân viên ===");
+
+    System.out.print("Mã nhân viên mới (" + nv.getMaNV() + "): ");
+    String maMoi = sc.nextLine().trim();
+    if (!maMoi.isEmpty()) nv.setMaNV(maMoi);
+
+    System.out.print("Tên nhân viên mới (" + nv.getHoTen() + "): ");
+    String tenMoi = sc.nextLine().trim();
+    if (!tenMoi.isEmpty()) nv.setHoTen(tenMoi);
+
+    System.out.print("Phòng ban mới (" + nv.getPhongBan() + "): ");
+    String phongBanMoi = sc.nextLine().trim();
+    if (!phongBanMoi.isEmpty()) nv.setPhongBan(phongBanMoi);
+
+    System.out.println("✅ Cập nhật thông tin nhân viên thành công!");
+}
 
     public ArrayList<NhanVien> getDanhSach() { return dsNhanVien; }
 

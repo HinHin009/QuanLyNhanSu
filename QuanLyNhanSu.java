@@ -26,10 +26,11 @@
                 System.out.println("4. Them phong ban");
                 System.out.println("5. Hien thi phong ban");
                 System.out.println("6. Tao bang luong cho 1 nhan vien");
-                System.out.println("7. Hien thi tat ca bang luong");
+                System.out.println("7. Hien thi bang luong");
                 System.out.println("8. Cap nhat gio cong cho part-time");
                 System.out.println("9. Xem danh sach part-time va gio cong");
-                System.out.println("10. Xoa nhan vien");
+                System.out.println("10. Sua thong tin nhan vien");
+                System.out.println("11. Xoa nhan vien");
                 System.out.println("0. Thoat");
                 System.out.print("Chon: ");
 
@@ -47,10 +48,16 @@
                     case 4 -> themPhongBan();
                     case 5 -> hienThiPhongBanVaNhanVien();
                     case 6 -> taoBangLuong();
-                    case 7 -> dsBangLuong.hienThiTatCa();
+                    case 7 -> {
+                            System.out.print("Nhap ma nhan vien can xem bang luong: ");
+                            String maNV = sc.nextLine().trim();
+                            dsBangLuong.hienThiBangLuongTheoNhanVien(maNV);
+                    }
+
                     case 8 -> capNhatGioCong();
                     case 9 -> xuatGioCongPartTime();
-                    case 10 -> xoaNhanVien();
+                    case 10 -> suaThongTinNhanVien();
+                    case 11 -> xoaNhanVien();
                     case 0 -> {
                         System.out.println("Luu du lieu va thoat chuong trinh...");
                         ghiVaoFile();
@@ -328,4 +335,47 @@
                 } catch (IOException e) { System.out.println("❌ Loi doc file bangluong: " + e.getMessage()); }
             }
         }
+        // ===== SUA THONG TIN NHAN VIEN =====
+private void suaThongTinNhanVien() {
+    System.out.println("=== SUA THONG TIN NHAN VIEN ===");
+    System.out.print("Nhap ma nhan vien can sua: ");
+    String ma = sc.nextLine().trim();
+
+    NhanVien nv = dsNhanVien.timNhanVien(ma);
+    if (nv == null) {
+        System.out.println("Khong tim thay nhan vien co ma " + ma);
+        return;
+    }
+
+    System.out.println("Thong tin hien tai:");
+    nv.hienThiThongTinChiTiet();
+
+    System.out.print("Nhap ma NV moi (Enter de bo qua): ");
+    String maMoi = sc.nextLine().trim();
+    if (!maMoi.isEmpty()) nv.setMaNV(maMoi);
+
+    System.out.print("Nhap ten NV moi (Enter de bo qua): ");
+    String tenMoi = sc.nextLine().trim();
+    if (!tenMoi.isEmpty()) nv.setHoTen(tenMoi);
+
+    System.out.print("Nhap chuc vu moi (Enter de bo qua): ");
+    String chucVuMoi = sc.nextLine().trim();
+    if (!chucVuMoi.isEmpty()) nv.setChucVu(chucVuMoi);
+
+    // Neu ban co them truong phong ban:
+    System.out.print("Nhap phong ban moi (Enter de bo qua): ");
+    String phongBanMoi = sc.nextLine().trim();
+    if (!phongBanMoi.isEmpty()) {
+        // xoa nhan vien khoi phong cu (neu co)
+        for (PhongBan pb : dsPhongBan.getDanhSach()) pb.xoaNhanVien(ma);
+        // them vao phong moi (neu ton tai)
+        PhongBan pbMoi = dsPhongBan.timPhongBan(phongBanMoi);
+        if (pbMoi != null) pbMoi.themNhanVien(nv);
+        else System.out.println("Khong tim thay phong ban " + phongBanMoi);
+    }
+
+    System.out.println("Da cap nhat thong tin nhan vien.");
+    ghiVaoFile();
+}
+
     }

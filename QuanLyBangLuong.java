@@ -1,28 +1,10 @@
 import java.util.ArrayList;
 
-public class DanhSachBangLuong {
+public class QuanLyBangLuong {
     private ArrayList<BangLuong> dsBangLuong = new ArrayList<>();
 
     public void themBangLuong(BangLuong bl) {
         dsBangLuong.add(bl);
-    }
-
-    // ✅ Trả về danh sách bảng lương (dùng cho xuất file, vòng lặp,...)
-    public ArrayList<BangLuong> getDanhSach() {
-        return dsBangLuong;
-    }
-
-    // ✅ Hiển thị toàn bộ bảng lương trong danh sách
-    public void hienThiBangLuong() {
-        if (dsBangLuong.isEmpty()) {
-            System.out.println("❌ Chưa có bảng lương nào trong danh sách!");
-            return;
-        }
-
-        System.out.println("===== DANH SÁCH BẢNG LƯƠNG =====");
-        for (BangLuong bl : dsBangLuong) {
-            bl.hienThiBangLuong();
-        }
     }
 
     // ✅ Hiển thị bảng lương của 1 nhân viên bất kỳ theo mã nhân viên

@@ -3,6 +3,7 @@ public abstract class NhanVien implements TinhLuong {
     protected String hoTen;
     protected String chucVu;
     protected double luongCoBan;
+    protected String phongBan;
     protected static int tongSoNhanVien = 0;
 
     public NhanVien(String maNV, String hoTen, String chucVu, double luongCoBan) {
@@ -12,6 +13,25 @@ public abstract class NhanVien implements TinhLuong {
         this.luongCoBan = luongCoBan;
         tongSoNhanVien++;
     }
+    public void setMaNV(String maNV) {
+        this.maNV = maNV;
+    }   
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public void setChucVu(String chucVu) {
+        this.chucVu = chucVu;
+    }
+    public void setPhongBan(String phongBan) {
+        this.phongBan = phongBan;
+    }  
+
+    public String getPhongBan() {
+        return phongBan;
+    }
+
 
     public String getMaNV() { return maNV; }
     public String getHoTen() { return hoTen; }
