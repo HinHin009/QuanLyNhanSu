@@ -1,4 +1,0 @@
-===== DANH SACH NHAN VIEN PART-TIME VA GIO CONG =====
-Ma NV      Ho Ten                    Chuc Vu              So Gio Lam      Tien Cong      
--------------------------------------------------------------------------------
-115        Nguyen Ngoc Son           nhan vien            120                      30,000
